@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(180deg, #ffd700 0%, #32cd32 100%);
   min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -54,7 +54,7 @@ body {
 }
 
 .user-message {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(180deg, #ffd700 0%, #32cd32 100%);
   color: white;
   padding: 12px 16px;
   margin-bottom: 15px;
@@ -147,11 +147,15 @@ body {
   border-radius: 25px;
   border: 2px solid #e9ecef;
   transition: all 0.3s ease;
+  padding: 12px 24px; /* Match button padding exactly */
+  height: auto; /* Allow natural height calculation */
+  line-height: 1.5;
+  box-sizing: border-box; /* Include border in height calculation */
 }
 
 .form-control:focus {
-  border-color: #667eea;
-  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  border-color: #32cd32;
+  box-shadow: 0 0 0 0.2rem rgba(50, 205, 50, 0.25);
 }
 
 .btn {
@@ -160,16 +164,19 @@ body {
   font-weight: 600;
   transition: all 0.3s ease;
   border: none;
+  height: auto; /* Allow natural height calculation */
+  line-height: 1.5;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #10b981; /* Emerald green */
   border: none;
 }
 
 .btn-primary:hover {
+  background: #059669; /* Darker emerald green on hover */
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
 }
 
 .btn-secondary {
@@ -204,7 +211,7 @@ body {
   width: 20px;
   height: 20px;
   border: 3px solid #f3f3f3;
-  border-top: 3px solid #667eea;
+  border-top: 3px solid #32cd32;
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
