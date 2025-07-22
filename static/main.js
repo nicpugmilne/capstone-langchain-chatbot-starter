@@ -51,7 +51,7 @@ function sendMessage() {
     if (xhr.status === 200) {
       try {
         let response = JSON.parse(xhr.responseText);
-        displayMessage("assistant", response.message);
+        displayMessage("assistant", response.message, response.response_type);
       } catch (e) {
         showError("Invalid response from server");
       }
@@ -77,16 +77,39 @@ function sendMessage() {
   xhr.send(JSON.stringify({ message: message }));
 }
 
-function displayMessage(sender, message) {
+function displayMessage(sender, message, responseType = null) {
   let chatContainer = document.getElementById("chat-container");
   let messageDiv = document.createElement("div");
 
   if (sender === "assistant") {
     messageDiv.classList.add("assistant-message");
 
-    // Create a span for the Chatbot text
+    // Create a span for the Chatbot text with response type indicator
     let chatbotSpan = document.createElement("span");
-    chatbotSpan.innerHTML = "<b>🤖 ThinkBot:</b> ";
+    let responseIndicator = "";
+
+    if (responseType) {
+      switch (responseType) {
+        case "chatbot":
+          responseIndicator = "🤖 ThinkBot (General AI chatbot): ";
+          messageDiv.style.borderLeft = "4px solid #007bff";
+          break;
+        case "knowledge_base":
+          responseIndicator = "📚 ThinkBot (Knowledge Base): ";
+          messageDiv.style.borderLeft = "4px solid #28a745";
+          break;
+        case "search":
+          responseIndicator = "🔍 ThinkBot (Knowledge Base Search Results): ";
+          messageDiv.style.borderLeft = "4px solid #ffc107";
+          break;
+        default:
+          responseIndicator = "🤖 ThinkBot: ";
+      }
+    } else {
+      responseIndicator = "🤖 ThinkBot: ";
+    }
+
+    chatbotSpan.innerHTML = `<b>${responseIndicator}</b>`;
     messageDiv.appendChild(chatbotSpan);
 
     // Append the message to the Chatbot span
@@ -186,7 +209,8 @@ function clearChat() {
   // Add welcome message
   displayMessage(
     "assistant",
-    "Hello! I'm ThinkBot, your AI assistant. How can I help you today? You can ask me general questions or use the dropdown to access specific features."
+    "Hello! I'm ThinkBot, your AI assistant. How can I help you today? You can ask me general questions or use the dropdown to access specific features.",
+    "chatbot"
   );
 }
 
@@ -233,7 +257,8 @@ document.addEventListener("DOMContentLoaded", function () {
   setTimeout(() => {
     displayMessage(
       "assistant",
-      "Hello! I'm ThinkBot, your AI assistant. How can I help you today? You can ask me general questions or use the dropdown to access specific features."
+      "Hello! I'm ThinkBot, your AI assistant. How can I help you today? You can ask me general questions or use the dropdown to access specific features.",
+      "chatbot"
     );
   }, 500);
 });

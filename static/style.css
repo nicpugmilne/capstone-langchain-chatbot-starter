@@ -75,6 +75,50 @@ body {
   border: 1px solid #e9ecef;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   animation: slideInLeft 0.3s ease-out;
+  position: relative;
+}
+
+/* Response type indicator styles */
+.assistant-message[style*="border-left: 4px solid #007bff"] {
+  border-left: 4px solid #007bff;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+}
+
+.assistant-message[style*="border-left: 4px solid #28a745"] {
+  border-left: 4px solid #28a745;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fff8 100%);
+}
+
+.assistant-message[style*="border-left: 4px solid #ffc107"] {
+  border-left: 4px solid #ffc107;
+  background: linear-gradient(135deg, #ffffff 0%, #fffef8 100%);
+}
+
+/* Response type badges */
+.response-type-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.response-type-badge.chatbot {
+  background: #007bff;
+  color: white;
+}
+
+.response-type-badge.knowledge-base {
+  background: #28a745;
+  color: white;
+}
+
+.response-type-badge.search {
+  background: #ffc107;
+  color: #212529;
 }
 
 @keyframes slideInRight {

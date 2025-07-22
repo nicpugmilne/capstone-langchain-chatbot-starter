@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template
-from flask import request, jsonify, abort
+from flask import request, jsonify
 from dotenv import load_dotenv
 
 from langchain.llms import Cohere
@@ -12,13 +12,6 @@ from langchain.chains import ConversationChain
 
 # Load environment variables
 load_dotenv()
-
-# Debug: Check if API key is loaded
-api_key = os.environ.get("COHERE_API_KEY")
-if not api_key:
-    print("Warning: COHERE_API_KEY not found in environment variables")
-else:
-    print(f"API key loaded successfully: {api_key[:10]}...")
 
 app = Flask(__name__)
 
@@ -117,7 +110,10 @@ def kbanswer():
             return jsonify({'message': 'Please provide a message'}), 400
         
         response_message = answer_from_knowledgebase(message)
-        return jsonify({'message': response_message}), 200
+        return jsonify({
+            'message': response_message,
+            'response_type': 'knowledge_base'
+        }), 200
     except Exception as e:
         return jsonify({'message': f'Error: {str(e)}'}), 500
 
@@ -132,7 +128,10 @@ def search():
             return jsonify({'message': 'Please provide a message'}), 400
         
         response_message = search_knowledgebase(message)
-        return jsonify({'message': response_message}), 200
+        return jsonify({
+            'message': response_message,
+            'response_type': 'search'
+        }), 200
     except Exception as e:
         return jsonify({'message': f'Error: {str(e)}'}), 500
 
@@ -147,7 +146,10 @@ def answer():
             return jsonify({'message': 'Please provide a message'}), 400
         
         response_message = answer_as_chatbot(message)
-        return jsonify({'message': response_message}), 200
+        return jsonify({
+            'message': response_message,
+            'response_type': 'chatbot'
+        }), 200
     except Exception as e:
         return jsonify({'message': f'Error: {str(e)}'}), 500
 
