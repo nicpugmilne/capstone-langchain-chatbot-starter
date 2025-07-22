@@ -6,7 +6,6 @@ body {
 
 .container {
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 15px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   padding: 30px;
   margin-top: 20px;
@@ -232,7 +231,8 @@ body {
 /* Responsive design */
 @media (max-width: 768px) {
   .container {
-    margin: 10px;
+    display: flex;
+    flex-direction: column;
     padding: 20px;
   }
 
