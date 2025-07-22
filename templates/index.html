@@ -1,31 +1,61 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Thinkbot</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="static/style.css">
-</head>
-<body>
+  <head>
+    <title>ThinkBot - Your AI Assistant</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="static/style.css" />
+  </head>
+  <body>
     <div class="container mt-5">
-        <div id="chat-container" class="chat-container"></div>
-        <div class="row">
-            <div class="col">
-                <div>
-                    <select class="form-control" id="function-select">
-                        <option value="answer">Answer as Chatbot</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col">
-                <div class="input-group-append">
-                    <input type="text" id="message-input" placeholder="Type your message here...">
-                    <button id="send-btn" class="btn btn-primary">Send</button>
-                </div>
-            </div>
+      <div class="text-center mb-4">
+        <h1 class="display-4">🤖 ThinkBot</h1>
+        <p class="lead">
+          Your intelligent AI assistant for answering questions and exploring
+          knowledge
+        </p>
+      </div>
+
+      <div id="chat-container" class="chat-container mb-4"></div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <div class="form-group">
+            <label for="function-select" class="font-weight-bold"
+              >Choose Function:</label
+            >
+            <select class="form-control" id="function-select">
+              <option value="answer">Answer as Chatbot</option>
+              <option value="kbanswer">Answer from Knowledge Base</option>
+              <option value="search">Search Knowledge Base</option>
+            </select>
+          </div>
         </div>
+        <div class="col-md-9">
+          <div class="input-group">
+            <input
+              type="text"
+              id="message-input"
+              class="form-control"
+              placeholder="Type your message here..."
+            />
+            <div class="input-group-append">
+              <button id="send-btn" class="btn btn-primary">Send</button>
+              <button id="clear-btn" class="btn btn-secondary">Clear</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
     <script src="static/main.js"></script>
-</body>
+  </body>
 </html>
